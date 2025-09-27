@@ -1,7 +1,6 @@
 website: www.luxurytreats.com
 clue:    its found that the page is vulnerablie to sqli 
-user:    steve
-password: test@123
+user:    steve and password: test@123
 
 manual process: Look around the page and find out the pages that have parameter 
                 we find orders 
