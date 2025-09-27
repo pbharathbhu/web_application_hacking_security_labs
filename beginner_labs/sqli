@@ -3,8 +3,8 @@ clue:    its found that the page is vulnerablie to sqli
 user:    steve and password: test@123
 task: to find the page that is sqli vulnerable
 
-manual process: Look around the page and find out the pages that have parameter 
-                we find orders 
+manual process: Look around the page and find out the pages that have parameter in the web page --> 
+                we find orders --> orders.aspx is vulnerable to sqli.
 
 sqli cheetsheet: https://portswigger.net/web-security/sql-injection/cheat-sheet
 sqli cheetsheet: https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/
