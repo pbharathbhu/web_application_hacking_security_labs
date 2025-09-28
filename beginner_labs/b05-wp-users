@@ -1,0 +1,8 @@
+website: users.breakthecode.com
+clue: wordpress website and some users are deleted and some are still intact
+task: find out users present now 
+
+process: 
+do an enumeration of wp users 
+
+wpscan -u "users.breakthecode.com" --enumerate u
