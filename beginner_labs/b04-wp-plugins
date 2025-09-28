@@ -1,0 +1,10 @@
+website: users.breakthecode.com
+clue: ebook plugin (is a wordpress plugin)
+task: find out the version of the outdated ebook plugin
+
+
+wpscan cheatsheet: https://github.com/wpscanteam/wpscan
+
+
+
+wpscan --url "users.breakthecode.com" --enumerate p

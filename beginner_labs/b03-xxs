@@ -1,0 +1,10 @@
+website: www.luxurytreats.com
+clue: vulnerable to xss
+task: find out which page is vulnerable to xss
+
+process: 
+Explore the page and find out if there are any pages where user input is expected. 
+
+xss cheat-sheet: https://www.softwaretestinghelp.com/cross-site-scripting-xss-attack-test/
+xss cheat-sheet: https://portswigger.net/web-security/cross-site-scripting/cheat-sheet
+

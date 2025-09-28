@@ -1,0 +1,15 @@
+website: 10.10.1.7 
+clue: ssl encryption implemented and old openssl used
+task: find the ssl version 
+
+
+procedure: 
+curl -kI https://10.10.1.7 
+
+or
+nmap -p443 --script http-server-header, http-headers,ssl-cert,ssl-enum-ciphers 10.10.1.7 / 
+nmap -A -O -T5 10.10.1.7 
+
+or 
+use sslscan
+sslscan 10.10.1.7

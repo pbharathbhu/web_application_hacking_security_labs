@@ -1,0 +1,6 @@
+website: www.moviescope.com
+clue: built on .net and directory browsing is to be done
+task: find out Flag.txt 
+
+process: Open dirbuster 
+         find the file Flag.txt
