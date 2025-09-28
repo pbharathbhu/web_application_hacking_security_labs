@@ -1,0 +1,14 @@
+website:   moviescope2.com 
+task: recently a functionality added login page for new features access, you need to bypass login and find out     Flag.aspx file code.
+
+
+procedure: 
+- nmap -A -T5 moviescope2.com (its microsoft sqlserver 2012)
+- try ' or 1=1 -- (on login page)
+- login 
+- open dirbuster 
+- get the file flag.aspx
+
+
+automation:
+try sqlmap for getting the flag.aspx (try while lab)
