@@ -1,0 +1,24 @@
+website: training.breakthecode.com is subset of breakthecode.com 
+task: scrutinize and get web.xml file 
+
+MyWebApp/
+ ├── index.html
+ ├── about.jsp
+ ├── css/
+ │    └── style.css
+ ├── WEB-INF/
+ │    ├── web.xml          ← Deployment descriptor
+ │    ├── classes/         ← Compiled .class files of your servlets
+ │    ├── lib/             ← JAR dependencies
+ │    └── tlds/ (optional) ← Tag libraries
+
+
+ procedure: 
+ 1. you can download using dirbuster or dirsearch
+    2. or you can try to access directly using URL: http://training.breakthecode.com:8080/MyWebApp/WEB-INF/web.xml
+
+
+OR 
+Go to 'training.breakthecode.com'
+check if any files download option 
+while downloading try changing the file name to web.xml

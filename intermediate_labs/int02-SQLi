@@ -1,0 +1,18 @@
+website: www.hotelbooking.com
+task: assess the website and get db level access
+      once you get db level access, find table named Flag and figure code in the column SecretCode.
+
+
+procedure: 
+==========
+- check the page keenly for a userinput field
+-  there is id search field 
+-  enter ' in the searchfield while you intercept proxy on burp 
+-  then copy the request from burp 
+- do an sqlmap -r file.txt -p search --dbs 
+- get the DB, Table, Column etc. 
+
+
+
+or do 
+sqlmap -r file.txt --search -C 'password'
