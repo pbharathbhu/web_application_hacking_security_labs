@@ -1,0 +1,10 @@
+you are doing a network pentesting 10.10.1.0 network. 
+its found 10.10.1.9 has some vulnerability which can give system level access.
+exploit it and find Flag.txt. 
+
+procedure: 
+1. nmap -A -T4 10.10.1.9 (found apache 2.2.22 version) /nikto -h http://10.10.1.9/  (explore about legion)
+2. searchsploit Apache 2.2.22
+3. msfconsole 
+4. use exploit/multi/http/apache_mod_cgi_bash_env_exec
+rest you know

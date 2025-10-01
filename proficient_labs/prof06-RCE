@@ -1,0 +1,13 @@
+website: accounts.breakthecode.com
+task: Flag.txt
+
+procedure: 
+1. nmap -T5 -A0 accounts.breakthecode.com
+2. its a wp website 
+wpscan --url accounts.breakthecode.com --usernames "users.txt" --password "passwords.txt"
+3. login to the website 
+4. No low hanging fruit
+5. just go to themes and twenty-nineteen is vulnerable 
+6. do reverse-shell
+try it on own 
+

