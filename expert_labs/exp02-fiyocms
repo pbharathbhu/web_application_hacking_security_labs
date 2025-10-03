@@ -1,0 +1,22 @@
+website: fiyocms.com
+task: find Flag.txt
+
+procedure:
+1. nmap -T5 -A www.fiyocms.com (no use)
+2. fiyocms.com has user panel for logging in
+3. dirbuster on fiyocms.com for admin panel
+4. no sqli and wordpress to login so try burpsuite bruteforcing
+5. Login
+   
+6. Version 
+──(kali㉿kali)-[~]
+└─$ searchsploit "fiyo cms 2.0.6.1"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                                                                                                                         |  Path
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+Fiyo CMS 2.0.6.1 - Privilege Escalation                                                                                                                                | php/webapps/41594.txt
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+
+7. Try the above by using burpsuite change the privilege to super user 
+8. which enables file manager 
+9. do a reverse shell 

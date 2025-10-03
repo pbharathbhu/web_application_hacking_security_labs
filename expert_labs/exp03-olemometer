@@ -1,0 +1,20 @@
+websites: 
+    themes.breakthecode.com, lms.breakthecode.com 
+clue:
+    themes.breakthecode.com has olimometer.
+
+procedure:
+1. themes.breakthecode.com is a wp website and it has olimometer
+2. 
+1. ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+ Exploit Title                                                                                                                                                         |  Path
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+WordPress Plugin Olimometer 2.56 - SQL Injection                                                                                                                       | php/webapps/40804.txt
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------- ---------------------------------
+
+2. https://www.exploit-db.com/exploits/40804
+
+3. Now, you get user from wolfcms db using sqlmap 
+4. login to lms.breakthecode.com?/admin/login using the user from wolfcms 
+5. then do a reverse shell. 
+
