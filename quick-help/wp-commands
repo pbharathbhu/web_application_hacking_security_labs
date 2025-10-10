@@ -1,0 +1,1 @@
+plugin enumeration: wpscan --url "http://users.breakthecode.com" --enumerate p

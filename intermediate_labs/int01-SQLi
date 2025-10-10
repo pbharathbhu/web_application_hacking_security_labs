@@ -1,5 +1,16 @@
+You are a pentester in an entertainment firm named moviescope2, which has its own website www.moviescope2.com. The organization recently added a functionality to login to the website, in order to access its exclusive features. Your task is to test its login functionality and see if it can be bypassed. Upon successfully bypassing the page, browse the file named Flag.aspx and view the secret code displayed on that page.
+
+
+=======================
+
+
 website:   moviescope2.com 
 task: recently a functionality added login page for new features access, you need to bypass login and find out     Flag.aspx file code.
+
+
+do a sqlmap: 
+sqlmap -r burp.txt --batch --level=3 --risk=2 --threads=4 
+which says the site is sqlmap vulnerable 
 
 
 procedure: 

@@ -1,3 +1,9 @@
+
+breakthecode.com has many subsets and users.breakthecode.com is one of them. \
+A security incident occurred on this website and a huge amount of data was breached. 
+A deeper investigation on the breach revealed that a vulnerable version of plugin named ebook which is installed in the website acted as the main attack vector for the breach. Identify the version of the wordpress plugin ebook.
+====
+
 website: users.breakthecode.com
 clue: ebook plugin (is a wordpress plugin)
 task: find out the version of the outdated ebook plugin

@@ -1,0 +1,12 @@
+
+>> curl -I http://10.10.1.7                             
+HTTP/1.1 403 Forbidden
+Date: Sun, 05 Oct 2025 15:31:58 GMT
+Server: Apache/2.4.2 (Win64) OpenSSL/1.0.1c PHP/5.4.3
+Content-Type: text/html; charset=iso-8859-1
+
+
+OR 
+
+nmap -A -O -T5 10.10.1.7 
+

