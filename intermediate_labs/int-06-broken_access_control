@@ -1,0 +1,3 @@
+breakthecode.com has many subsets and books.breakthecode.com is one of them. 
+You are a pentester and you are asked to assess the website books.breakthecode.com.
+ Assess the website, exploit the vulnerabilities and determine the secret code written in the file named Flag.txt located on the system. Hint The file is placed in System32 Directory.

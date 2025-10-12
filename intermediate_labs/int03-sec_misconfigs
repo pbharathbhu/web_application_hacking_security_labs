@@ -1,3 +1,13 @@
+It was observed in Level 1 that the website users.breakthecode.com has been compromised. 
+Some users have been deleted, while some users passwords were changed by the attackers.
+One such user who lost his access to the website is Alfred Jones and his username is alfred. 
+While there is an option to reset the password from the admin account, 
+the admins password was also changed by the attackers. As a security auditor, 
+your task is to retrieve/crack the current password of alfred.
+
+======================
+
+
 website: users.breakthecode.com
 clue: alfred's password is changed and admin's password changed too, to reset the alfred's password.
 task:  get alfred's password.

@@ -1,3 +1,7 @@
+The website www.moviescope.com has a login page which can be easily bypassed. Upon bypassing the login mechanism and logging in to the website, you may find the details of your profile in the View Profile section of the website. With this knowledge, try to obtain the Profile information of a user named Steve and write his contact number in the below input field.
+
+================
+
 website: www.moviescope.com
 clue: you can bypass login and after logging in you can access your profile, 
         with this information, 

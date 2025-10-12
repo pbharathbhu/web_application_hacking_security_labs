@@ -1,0 +1,1 @@
+sqlmap -r hotelbooking.txt --search -C Secret code

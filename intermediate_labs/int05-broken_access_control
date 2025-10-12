@@ -1,3 +1,10 @@
+training.breakthecode.com is a subset of breakthecode.com, and its security is managed by EGS.
+ You are a pentester in EGS and you are asked to test the website on regular basis.
+  As a part of the scheduled testing, your task is to test the website for vulnerabilities and compromise them,
+   and then download web.xml file associated with the website.
+ The file contains a secret code inside it, which you need to determine, as a part of this challenge.
+
+
 website: training.breakthecode.com is subset of breakthecode.com 
 task: scrutinize and get web.xml file 
 
